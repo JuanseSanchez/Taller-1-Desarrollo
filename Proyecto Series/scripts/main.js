@@ -6,9 +6,11 @@ avrgTemps.innerHTML = `${getAverageSeasons(series)}`;
 function renderSeriesInTable(series) {
     series.forEach((serie) => {
         let trElement = document.createElement("tr");
-        trElement.innerHTML = `<td>${serie.name}</td>
-                           <td>${serie.channel}</td>
-                           <td>${serie.seasons}</td>`;
+        trElement.innerHTML = `
+                          <td>${serie.id}</td>
+                          <td>${serie.name}</td>
+                          <td>${serie.channel}</td>
+                          <td>${serie.seasons}</td>`;
         seriesTbody.appendChild(trElement);
     });
     const average = getAverageSeasons(series);
