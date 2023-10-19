@@ -1,13 +1,11 @@
-var Serie = /** @class */ (function () {
-    function Serie(id, nombre, plataforma, temporadas, descripcion, pagina, imagen) {
+export class Serie {
+    constructor(id, name, channel, seasons, description, link, image) {
         this.id = id;
-        this.nombre = nombre;
-        this.plataforma = plataforma;
-        this.temporadas = temporadas;
-        this.descripcion = descripcion;
-        this.pagina = pagina;
-        this.imagen = imagen;
+        this.name = name;
+        this.channel = channel;
+        this.seasons = seasons;
+        this.description = description;
+        this.link = link;
+        this.image = image;
     }
-    return Serie;
-}());
-export { Serie };
+}
