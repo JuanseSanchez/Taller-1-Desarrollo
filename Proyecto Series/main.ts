@@ -3,7 +3,7 @@ import { Serie } from "./Serie";
 import { series } from './data.js';
 
 let seriesTbody: HTMLElement = document.getElementById('series')!;
-const avrgTemps: HTMLElement = document.getElementById("promedio-temporadas")!;
+const avrgTemps: HTMLElement = document.getElementById("average-seasins")!;
 
 renderSeriesInTable(series);
 
@@ -21,15 +21,24 @@ function renderSeriesInTable(series: Serie[]): void {
   const average = getAverageSeasons(series);
 
   let promedio = document.createElement("tr");
-  promedio.innerHTML = `<td colspan="3">Promedio Temporadas: ${average}</td>`;
+  promedio.innerHTML = `<td colspan="3">Average Seasons: ${average}</td>`;
   seriesTbody.appendChild(promedio);
 }
 
 function getAverageSeasons(series: Serie[]): number {
   let totalSeasons: number = 0;
-    let numberSeries: number = 0;
-    series.forEach((serie) => totalSeasons = totalSeasons + serie.seasons);
-    series.forEach((serie) => numberSeries = numberSeries + 1);
-    return totalSeasons;
+  let numberSeries: number = 0;
+
+  series.forEach((serie) => {
+    totalSeasons = totalSeasons + serie.seasons;
+    numberSeries = numberSeries + 1;
+  });
+  
+  if (numberSeries === 0) {
+    return 0; // Avoid division by zero if there are no series
+  }
+  let average = totalSeasons / numberSeries;
+  return average;
+  
 }
 
