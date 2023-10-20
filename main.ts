@@ -17,10 +17,6 @@ function renderSeriesInTable(series: Serie[]): void {
       <td>${serie.channel}</td>
       <td>${serie.seasons}</td>`;
     seriesTbody.appendChild(trElement);
-
-    trElement.querySelector('.show-card')?.addEventListener('click', () => {
-      showCard(serie);
-    });
   });
 
   const average = getAverageSeasons(series);
@@ -44,19 +40,4 @@ function getAverageSeasons(series: Serie[]): number {
   }
   let average = totalSeasons / numberSeries;
   return average;
-}
-
-function showCard(serie: Serie): void {
-  const card: HTMLElement | null = document.getElementById('details');
-  if (card) {
-    card.innerHTML = `
-      <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="${serie.image}" alt="${serie.name} picture">
-        <div class="card-body">
-          <h5 class="card-title">${serie.name}</h5>
-          <p class="card-text">${serie.description}</p>
-          <a href="${serie.link}" target="_blank">${serie.link}</a>
-        </div>
-      </div>`;
-  }
 }
