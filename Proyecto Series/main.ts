@@ -1,5 +1,4 @@
 import { Serie } from "./Serie";
-
 import { series } from './data.js';
 
 let seriesTbody: HTMLElement = document.getElementById('series')!;
@@ -13,11 +12,15 @@ function renderSeriesInTable(series: Serie[]): void {
   series.forEach((serie) => {
     let trElement = document.createElement("tr");
     trElement.innerHTML = `
-                          <td>${serie.id}</td>
-                          <td>${serie.name}</td>
-                          <td>${serie.channel}</td>
-                          <td>${serie.seasons}</td>`;
+      <td>${serie.id}</td>
+      <td class="show-card">${serie.name}</td>
+      <td>${serie.channel}</td>
+      <td>${serie.seasons}</td>`;
     seriesTbody.appendChild(trElement);
+
+    trElement.querySelector('.show-card')?.addEventListener('click', () => {
+      showCard(serie);
+    });
   });
 
   const average = getAverageSeasons(series);
@@ -41,6 +44,19 @@ function getAverageSeasons(series: Serie[]): number {
   }
   let average = totalSeasons / numberSeries;
   return average;
-  
 }
 
+function showCard(serie: Serie): void {
+  const card: HTMLElement | null = document.getElementById('details');
+  if (card) {
+    card.innerHTML = `
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="${serie.image}" alt="${serie.name} picture">
+        <div class="card-body">
+          <h5 class="card-title">${serie.name}</h5>
+          <p class="card-text">${serie.description}</p>
+          <a href="${serie.link}" target="_blank">${serie.link}</a>
+        </div>
+      </div>`;
+  }
+}
