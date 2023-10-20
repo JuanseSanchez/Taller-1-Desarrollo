@@ -2,7 +2,7 @@ import { Serie } from "./Serie";
 import { series } from './data.js';
 
 let seriesTbody: HTMLElement = document.getElementById('series')!;
-const avrgTemps: HTMLElement = document.getElementById("average-seasins")!;
+const avrgTemps: HTMLElement = document.getElementById("average-seasons")!;
 
 renderSeriesInTable(series);
 

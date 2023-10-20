@@ -1,6 +1,6 @@
 import { series } from './data.js';
 let seriesTbody = document.getElementById('series');
-const avrgTemps = document.getElementById("average-seasins");
+const avrgTemps = document.getElementById("average-seasons");
 renderSeriesInTable(series);
 avrgTemps.innerHTML = `${getAverageSeasons(series)}`;
 function renderSeriesInTable(series) {
